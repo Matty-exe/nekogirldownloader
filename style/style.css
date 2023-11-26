@@ -1,0 +1,62 @@
+h1{
+    color: purple;
+    text-align: center;
+}
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* This ensures the body takes up the full viewport height. */
+    background-color: black;
+}
+
+.imageContainer {
+    width: 50%; /* Adjust this value to control the width of the container */
+    margin: 50px;
+}
+
+img{
+    width: 500px; /* Adjust this value to control the size of the image */
+    height: auto; /* Maintain the aspect ratio */
+}
+
+.buttons{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.finestra {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    border: 1px solid #ddd;
+    padding: 20px;
+    z-index: 1;
+}
+
+.contenuto {
+    text-align: center;
+    color: purple;
+}
+
+.chiudi {
+    color: #aaa;
+    float: right;
+    margin-bottom: 0px;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+}
+#set{
+    text-align: left;
+}
+.chiudi:hover,
+.chiudi:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
