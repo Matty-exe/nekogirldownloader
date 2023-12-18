@@ -1,121 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>NekoGirlDownloader</title>
-        <link rel="stylesheet" href="./style/style.css">
-        <style>
-            .finestra {
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                display: none;
-                z-index: 2;
-                background-color: white;
-                padding: 20px;
-                border: 1px solid #ccc;
-                border-radius: 5px;
-            }
-        </style>
-    </head>
-    <body>
-        <a id="downloadLink" style="display: none;"></a>
-        <h1>NekoGirlDownloader</h1>
-        <div class="imageContenitor" style="position: relative;">
-            <img src="https://nekos.moe/image/SJv4lnRhf" alt="" id="defaultImage">
-            <div id="finestra" class="finestra">
-                <div class="contenuto">
-                    <h3 id="set">Settings</h3>
-                    <input type="checkbox" id="nsfw"/>
-                    <label htmlFor="nsfw">nsfw</label>
-                    <h4 class="chiudi" onclick="apply()">Apply</h4>
-                </div>
-            </div>
-        </div>
-        <div class="buttons">
-            <input type="button" id="bottone" value="Genera">
-            <input type="button" id="download" value="download">
-            <input type="button" id="settings" value="settings" onclick="settings()">
-        </div>
-    <script>
-        const generateButton = document.querySelector("#bottone");
-const downloadButton = document.querySelector("#download");
-const downloadLink = document.getElementById("downloadLink");
-const defaultImage = document.getElementById("defaultImage");
-var finestra = document.getElementById("finestra");
-finestra.style.display = "none";
-var check = document.querySelector("#nsfw");
-generateButton.addEventListener("click", () => {
-  var jsonUrl = "https://nekos.moe/api/v1/random/image?nsfw=false"; // Sostituisci con l'URL JSON effettivo
-  if(check.checked === true){
-    console.log("nsfw on");
-    jsonUrl = "https://nekos.moe/api/v1/random/image?nsfw=true"; // Sostituisci con l'URL JSON effettivo
-  }
-
-  // Fetch the JSON data
-  fetch(jsonUrl)
-    .then(response => {
-      if (!response.ok) {
-        throw new Error("Errore nella richiesta HTTP: " + response.status);
-      }
-      const risp = response.json();
-      console.log(risp);
-      return risp;
-    })
-    .then(data => {
-      if (data.images && data.images.length > 0) {
-        const firstImage = data.images[0]; // Prendi il primo oggetto nell'array "images"
-        const id = firstImage.id;
-
-        // Ora puoi utilizzare l'ID come desideri
-        console.log("Valore di 'id': " + id);
-
-        img = new Image();
-        img.src = "https://nekos.moe/image/" + id;
-
-        const imageContainer = document.querySelector('.imageContenitor');
-        imageContainer.innerHTML = ''; // Cancella immagini esistenti
-        imageContainer.appendChild(img);
-
-        // Aggiungi l'URL dell'immagine al link per il download
-        downloadLink.href = img.src;
-        downloadLink.download = `immagine_${id}.jpg`;
-
-        // Nascondi l'immagine predefinita
-        defaultImage.style.display = "none";
-      } else {
-        console.error("Nessun elemento 'images' trovato nel JSON:", data);
-      }
-    })
-    .catch(error => {
-      console.error("Si è verificato un errore durante il recupero o la lettura del JSON:", error);
-    });
-});
-downloadButton.addEventListener("click", async () => {
-  // Simula il download dell'immagine
-  downloadLink.click();
-  /*const image = await fetch(img);
-  const imageBlog = await image.blob();
-  const imageURL = URL.createObjectURL(imageBlog);
-
-  const link = document.createElement('a');
-  link.href = imageURL;
-  link.download = 'image file name here';
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);*/
-});
-function settings(){
-    finestra.style.display = "block";
-}
-function apply(){
-    finestra.style.display = "none";
-}
-// Mostra l'immagine predefinita quando la pagina si carica
-defaultImage.style.display = "block";
-
-    </script>
-</body>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShadesOfMatty</title>
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="style/home.css">
+  </head>
+  <body>
+    <h1>ShadesOfMatty Sites</h1>
+    <div class="lista">
+      <ul>
+        <li><a href="page/NekoGIrlDownloader.html">NekoGirlDownloader</a></li>
+        <li><a href="page/WaifuDownloader.html">WaifuDownloader</a></li>
+      </ul>
+    </div>
+  </body>
 </html>
