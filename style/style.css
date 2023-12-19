@@ -1,5 +1,15 @@
 h1{
-    color: purple;
+    color: rgb(255, 114, 255);
+    text-align: center;
+}
+#power{
+    color: rgb(255, 114, 255);
+    text-align: center;
+}
+#siti{
+    color: rgb(255, 114, 255);
+}
+#bio{
     text-align: center;
 }
 body {
